@@ -1,14 +1,13 @@
-# AI Learning Project
+# AI Learning
 
-This is my journey to become a credible builder at the intersection of APIs and AI.
+Building at the intersection of APIs and AI.
 
-## Current Status
+Scripts and experiments from my learning journey — focused on LLMs,
+agentic workflows, and AI tooling for API management.
 
-- [x] Dev environment set up (Python 3.12, venv, Anthropic API key)
-- [x] First Claude API script working
+## Setup
 
-## What's Next
-
-Week 2: Marketing AI toolkit
-
-Check out [CLAUDE.md](CLAUDE.md) for detailed project notes.
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
