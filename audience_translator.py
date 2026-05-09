@@ -44,14 +44,33 @@ valid_audiences = [
     "compliance_officer", "ceo", "procurement", "all"
 ]
 
+def save_to_markdown(concept: str, results: dict) -> str:
+    filename = concept[:50].replace(" ", "_").lower() + ".md"
+    with open(filename, "w") as f:
+        f.write(f"# {concept}\n\n")
+        for audience, content in results.items():
+            f.write(f"## {audience.upper()}\n\n")
+            f.write(content)
+            f.write("\n\n---\n\n")
+    return filename
+
 print(f"\nAvailable audiences: {', '.join(valid_audiences)}")
 concept = input("Enter concept: ")
 audience = input("Enter audience: ")
 
+results = {}
+
 if audience == "all":
     for a in valid_audiences[:-1]:
         print(f"\n--- {a.upper()} ---")
-        print(translate_for_audience(concept, a))
+        output = translate_for_audience(concept, a)
+        print(output)
+        results[a] = output
 else:
+    output = translate_for_audience(concept, audience)
     print(f"\n--- {audience.upper()} ---")
-    print(translate_for_audience(concept, audience))
+    print(output)
+    results[audience] = output
+
+filename = save_to_markdown(concept, results)
+print(f"\n✓ Saved to {filename}")
