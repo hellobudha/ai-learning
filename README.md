@@ -14,4 +14,4 @@ pip install -r requirements.txt
 
 ## Projects
 - `hello_claude.py` — first Claude API call
-- `audience_translator.py` — translates any concept for developer, CTO, risk officer, or board audience
+- `audience_translator.py` — translates any concept for 12 audiences: engineer, solution architect, platform engineer, AI engineer, product manager, CTO, CIO, CISO, risk officer, compliance officer, CEO, procurement
