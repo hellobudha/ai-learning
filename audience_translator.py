@@ -31,7 +31,9 @@ def translate_for_audience(concept: str, audience: str) -> str:
         - risk_officer: regulatory compliance, audit trails, policy enforcement
         - compliance_officer: policy documentation, regulatory evidence, US regulations first
         - ceo: business outcomes, market position, competitive advantage, growth
-        - procurement: vendor risk, TCO, contract flexibility, lock-in avoidance""",
+        - procurement: vendor risk, TCO, contract flexibility, lock-in avoidance
+
+Do not use em dashes (—) in any output. Use commas, colons, or restructure the sentence instead.""",
         messages=[
             {"role": "user", "content": f"Concept: {concept}\nAudience: {audience}"}
         ]
@@ -44,12 +46,12 @@ valid_audiences = [
     "compliance_officer", "ceo", "procurement", "all"
 ]
 
-def save_to_markdown(concept: str, results: dict) -> str:
-    filename = concept[:50].replace(" ", "_").lower() + ".md"
+def save_to_markdown(concept: str, audience: str, results: dict) -> str:
+    filename = "outputs/" + concept[:50].replace(" ", "_").lower() + "_" + audience.lower() + ".md"
     with open(filename, "w") as f:
         f.write(f"# {concept}\n\n")
-        for audience, content in results.items():
-            f.write(f"## {audience.upper()}\n\n")
+        for aud, content in results.items():
+            f.write(f"## {aud.upper()}\n\n")
             f.write(content)
             f.write("\n\n---\n\n")
     return filename
@@ -72,5 +74,5 @@ else:
     print(output)
     results[audience] = output
 
-filename = save_to_markdown(concept, results)
+filename = save_to_markdown(concept, audience, results)
 print(f"\n✓ Saved to {filename}")

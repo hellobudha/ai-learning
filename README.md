@@ -15,4 +15,4 @@ pip install -r requirements.txt
 
 ## Projects
 - `hello_claude.py` — first Claude API call
-- `audience_translator.py` — translates any concept for 12 audiences and saves output as a markdown file
+- `audience_translator.py` — translates any concept for 12 audiences and saves output as a markdown file to `outputs/` named by concept and audience
